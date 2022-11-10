@@ -58,7 +58,7 @@ void loop() {
    1+1 <- 0+1 | 1+0
 
   */
-
+  DigiJoystick.update();
   uint8_t signal = PINB & ((1 << PIN_A) | (1 << PIN_B));
   change_signal = signal ^ prev_signal;
   if ( change_signal == 0 ){ // same input.
@@ -98,6 +98,4 @@ ISR(TIMER0_OVF_vect) {
     DigiJoystick.setButtons((char)0x00, (char)0x00);  // release button 
     digitalWrite(PIN_LED, LOW);
   }
-  DigiJoystick.update();
-
 }
